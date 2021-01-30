@@ -13,7 +13,7 @@ app.get('/api/cow/:say', cors(), async (req, res, next) => {
 })// Serve our base route that returns a Hello World cow
 app.get('/api/cow/', cors(), async (req, res, next) => {
   try {
-    const moo = cowsay.say({ text: 'hello' })
+    const moo = cowsay.say({ text: 'heroku test-app' })
     res.json({ moo })
   } catch (err) {
     next(err)
