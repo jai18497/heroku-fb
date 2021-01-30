@@ -1,26 +1,38 @@
 import React, { Component } from 'react'
-import './App.css'class App extends Component {
+import './App.css'
+
+class App extends Component {
   state = {
     cow: '',
     text: ''
-  }componentDidMount() {
+  }
+
+componentDidMount() {
     this.fetchCow()
-  }fetchCow = async () => {
+  }
+
+fetchCow = async () => {
     const response = await fetch(`/api/cow`)
     const initialCow = await response.json()
     const cow = initialCow.moo
     this.setState({ cow })
-  }customCow = async evt => {
+  }
+
+customCow = async evt => {
     evt.preventDefault()
     const text = this.state.text
     const response = await fetch(`/api/cow/${text}`)
     const custom = await response.json()
     const cow = custom.moo
     this.setState({ cow, text: '' })
-  }handleChange = evt => {
+  }
+
+handleChange = evt => {
     this.setState({ [evt.target.name]: evt.target.value })
     console.log(this.state.text)
-  }render() {
+  }
+
+render() {
     return (
       <div className="App">
         <h3>Text Cow. Moo</h3>
@@ -38,4 +50,6 @@ import './App.css'class App extends Component {
       </div>
     )
   }
-}export default App
+}
+
+export default App
